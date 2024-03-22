@@ -1,6 +1,8 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import DataTable from './views/DataTable.vue';
+
+
 import { onMounted, ref } from 'vue';
 
 
@@ -17,6 +19,8 @@ onMounted(async () => {
     
   }
 });
+
+
 </script>
 
 <template>
@@ -35,10 +39,10 @@ onMounted(async () => {
 
     <RouterView />
     <main class="main">
-      <template v-if="items.length > 0">
+      <!-- <template v-if="items.length >0"> -->
         <DataTable :items="items" />
     
-      </template>
+      <!-- </template> -->
     </main>
   </div>
   

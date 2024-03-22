@@ -1,11 +1,46 @@
+
 <script setup>
 import SearchBar from "../components/SearchBar.vue";
 import Dropdown  from "../components/Dropdown.vue";
 import { computed, ref } from "vue";
 
 
+
 const searchFilter = ref('');
 const designationFilter = ref([])
+
+const currentPage = ref(1);
+const itemsPerPage = 10; 
+
+const totalItems = computed(() => searchedItems.value.length);
+const totalPages = computed(() => Math.ceil(totalItems.value / itemsPerPage));
+
+
+const paginatedItems = computed(() => {
+  const startIndex = (currentPage.value - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  return searchedItems.value.slice(startIndex, endIndex);
+});
+
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
+
+const goToPage = (pageNumber) => {
+  if (pageNumber >= 1 && pageNumber <= totalPages.value) {
+    currentPage.value = pageNumber;
+  }
+};
+
 
 const props = defineProps({
   items: {
@@ -15,6 +50,8 @@ const props = defineProps({
 });
 
 const searchedItems = computed(() => {
+
+
  if (searchFilter.value !== '') {
   return props.items.filter(item => 
   item.name.includes(searchFilter.value) || 
@@ -24,7 +61,10 @@ const searchedItems = computed(() => {
  }
   return props.items;
 })
-if (designationFilter.value.length){items = items.filter(item => designationFilter.value.includes(item.designation))
+if (designationFilter.value.length)
+{items = items.filter(item => 
+  designationFilter.value.includes(
+    item.designation))
 }
 
 const handleSearch = (search) => {
@@ -38,10 +78,11 @@ const handleFilter = (filter) => {
  return designationFilter.value.push(filter);
 
 }
+;
 </script>
 
 <template>
-  <div>
+  <div class='container'>
     <h1>Data Table</h1>
 <div class="filters">
   <SearchBar @search="handleSearch"/>
@@ -59,7 +100,8 @@ const handleFilter = (filter) => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in searchedItems" :key="item.name + '-' + item.surname">
+        <tr v-for="item in paginatedItems" :key="item.name + '-' + item.surname">
+        <!-- <tr v-for="item in searchedItems" :key="item.name + '-' + item.surname"> -->
           <td>{{ item.name}}</td> 
                     <td>{{ item.surname }}</td>
           <td>{{ item.designation }}</td>
@@ -71,8 +113,13 @@ const handleFilter = (filter) => {
       </tbody>
     </table>
 
+   
     <div class="pagination-controls">
-      </div>
+      <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+    </div>
+    
    
   </div>
   
@@ -81,7 +128,11 @@ const handleFilter = (filter) => {
 <style scoped>
 
 
-
+container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 table {
   display: flex;
   flex-direction: column;
