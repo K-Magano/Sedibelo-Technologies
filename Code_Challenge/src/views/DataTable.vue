@@ -180,6 +180,40 @@ tr:nth-of-type(2n){
  
 }
 
+.pagination-controls {
+  margin: 5%;
+  width: 85%;
+  
+}
+
+.pagination-controls button:hover,
+.pagination-controls button.active {
+  background-color: #013237; 
+}
+
+.pagination-controls button{
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 1.5rem 1.5rem;
+  margin-left: 3rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+  background: #e09a1f;
+  border-style: none;
+}
+.pagination-controls button:hover,
+.pagination-controls button.active {
+  background-color: #013237; 
+}
+
+.bSpan{
+  color: black;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 1rem;
+}
+
 /*Mobile View*/
 
 @media (max-width: 320px) {
@@ -218,6 +252,7 @@ tr:nth-of-type(2n){
   
   }
 
+/*med mobile*/
 
 
 @media (max-width: 650px) {

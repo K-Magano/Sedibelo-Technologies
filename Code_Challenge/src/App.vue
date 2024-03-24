@@ -54,7 +54,7 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   width: 80%;
- overflow: hidden;
+  overflow: hidden;
 }
 
 /* Header */
@@ -117,16 +117,21 @@ header {
  
 }
 
-@media (max-width: 320px) {
+/*med mobile*/
+
+@media (max-width: 375px) {
   .container{
-    flex-direction: columns;
-    width: 300px;
+    flex-direction: column;
+    width: 100%;
+    
     
   }
+
  .wrapper{
     color: #447778;
     font-size: 14px;
   }
+  
   .myChart{
     height:300px;
   }
@@ -175,8 +180,77 @@ header {
     color:#a87b37 
   }
 
-
+  .main {
+     width: 100%;
+   
+  }
+  
 }
+
+
+
+/*mobile view*/
+
+@media (max-width: 320px) {
+  .container{
+    flex-direction: column;
+    width: 100%;
+    
+  }
+ .wrapper{
+    color: #447778;
+    font-size: 14px;
+  }
+  
+  .myChart{
+    height:300px;
+  }
+
+  .logo {
+    width: 280px; 
+    height: 120px; 
+  }
+  .logo-container {
+    text-align: center; 
+  }
+
+  header {
+    border-radius: 10px;
+    background-color: #FEAE96;
+    background-image: url('../src/assets/asset 10.jpeg');
+    background-size: cover;   
+    width: 100%;
+    overflow: hidden;
+    height: 150px; 
+    
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    width: 100%;
+    background: #a87b37
+  }
+  
+  .nav-link {
+    color: #333333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+    
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: #013237; 
+    color:#a87b37 
+  }
+}
+
 
 @media (max-width: 768px) {
   .container {
