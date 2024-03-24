@@ -10,7 +10,7 @@ const searchFilter = ref('');
 const designationFilter = ref([])
 
 const currentPage = ref(1);
-const itemsPerPage = 10; 
+const itemsPerPage = 20; 
 
 const totalItems = computed(() => searchedItems.value.length);
 const totalPages = computed(() => Math.ceil(totalItems.value / itemsPerPage));
@@ -50,8 +50,6 @@ const props = defineProps({
 });
 
 const searchedItems = computed(() => {
-
-
  if (searchFilter.value !== '') {
   return props.items.filter(item => 
   item.name.includes(searchFilter.value) || 
@@ -61,6 +59,7 @@ const searchedItems = computed(() => {
  }
   return props.items;
 })
+
 if (designationFilter.value.length)
 {items = items.filter(item => 
   designationFilter.value.includes(
@@ -82,41 +81,41 @@ const handleFilter = (filter) => {
 </script>
 
 <template>
-  <div class='container'>
-    <h1>Data Table</h1>
-<div class="filters">
-  <SearchBar @search="handleSearch"/>
-  <Dropdown :items="items" @filter="handleFilter" />
-</div>
+
+  
+  <div class='wrapper'>
+ 
+
+    <div class="filters-container">
+      <SearchBar @search="handleSearch"/>
+      <Dropdown :items="items" @filter="handleFilter" />
+    </div>
 
     <table>
-      <thead>
+      <caption>Data Table</caption>
+     
         <tr>
           <th>Name</th>
           <th>Surname</th>
           <th>Designation</th>
           <th>Department</th>
-          <th><span>Actions</span></th>
-        </tr>
-      </thead>
-      <tbody>
+         </tr>
+   
+   
         <tr v-for="item in paginatedItems" :key="item.name + '-' + item.surname">
-        <!-- <tr v-for="item in searchedItems" :key="item.name + '-' + item.surname"> -->
-          <td>{{ item.name}}</td> 
-                    <td>{{ item.surname }}</td>
-          <td>{{ item.designation }}</td>
-          <td>{{ item.department }}</td>
-          <td class="actions">
-            <a href="#">Details</a>
-          </td>
+          <td data-cell="name">{{ item.name}}</td> 
+          <td data-cell="surname">{{ item.surname }}</td>
+          <td data-cell="designation">{{ item.designation }}</td>
+          <td data-cell="department">{{ item.department }}</td>
+          
         </tr>
-      </tbody>
+     
     </table>
 
    
     <div class="pagination-controls">
       <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
-      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <span class="bSpan">{{ currentPage }} / {{ totalPages }}</span>
       <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
     </div>
     
@@ -125,36 +124,131 @@ const handleFilter = (filter) => {
   
 </template>
 
+
 <style scoped>
-
-
-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.wrapper {
+ width: min(900px, 100% - 4rem);
+ margin-inline: auto;
+ 
+ 
 }
+
 table {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: purple;
-  margin-top: 10%;
-  
+width: 100%;
+ background: #333333;
+ padding: 1rem;
+ border-collapse: collapse;
+ color:antiquewhite;
+ 
+}
+
+
+caption,
+ th,
+ td {
+padding : 1rem;
+}
+
+
+th{
+  text-align: left;
+ 
+}
+
+caption{
+  background: #e09a1f;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 th{
-    font-weight: bold;
-    background-color: pink;
+
+  background: #447778;
+}
+
+tr:nth-of-type(2n){
+  background: #494c4f;
+}
+
+.filters-container {
+  display: flex; 
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  background: #013237;
+  padding: 3%;
+  
+ 
+}
+
+@media (max-width: 768px) {
+  .filters-container {
+    flex-direction: row;
+    background: #447778;
+    
+  }
+}
+
+@media (max-width: 425px) {
+  .filters-container {
+    background: pink;
+       
+  }
 }
 
 h1 {
   margin-bottom: 1rem;
 }
 
-filters {
-  background-color: aquamarine;
-  flex-direction: row;
+.pagination-controls button{
+  color: black;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+
+}
+.pagination-controls button:hover,
+.pagination-controls button.active {
+  background-color: #013237; 
 }
 
+.bSpan{
+  color: black;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem
+}
+
+@media (max-width: 650px) {
+  th{
+    display: none;
+  }
+
+  td{
+    display: grid;
+    grid-template-columns: 15ch auto;
+    padding: 0.75rem 1rem;
+    width: 100%;
+  }
+
+ td:first-child{
+  padding-top: 2rem;
+ }
+
+  td:last-child{
+    padding-bottom: 2rem;
+  }
+
+  td::before{
+   content:attr(data-cell) ": ";
+   font-weight: 700;
+   text-transform: capitalize;
+  }
+  
+  
+}
 
 </style>

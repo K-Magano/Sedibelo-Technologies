@@ -12,10 +12,28 @@ const search = (e) => {
 </script>
 
 <template>
-    <form>
-        <label>Search</label>
+    <form class="searchForm">
         <div>
-            <input type="text" @input="search" placeholder="Name, Surname or Department"/>
+            <input type="text" @input="search" placeholder="Name, Surname or Department" class="searchInput"/>
         </div>
     </form>
 </template>
+
+<style scoped>
+
+/*.searchForm {
+    border-radius: 5;
+    margin: 5%;
+    
+}*/
+
+.searchInput{
+    width: 15rem;
+    height: 2.5rem;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+   
+}
+</style>

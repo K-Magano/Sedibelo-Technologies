@@ -1,8 +1,8 @@
 <template>
   <div class="pie-chart-container">
     <h1>Number of App Installs by Year</h1>
-    <p>Hello</p>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    
+    <canvas id="myChart" width="400" height="350"></canvas>
   </div>
 </template>
 
@@ -19,18 +19,18 @@ mounted() {
           label: '# of Installs',
           data: data.map(item => item.numInstalls),
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
+            '#447778',
+            '#e09a1f',
+            '#7a7a7a',
+            '#0c0c0c',
+            '#a87b37',
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
+            '#447778',
+            '#e09a1f',
+            '#7a7a7a',
+            '#0c0c0c',
+            '#a87b37',
           ],
           borderWidth: 1,
         }];
@@ -49,7 +49,7 @@ mounted() {
     },
 });
 })
-.catch(error => console.error('nO DATA FOUND'))
+.catch(error => console.error('No data found'))
 
 },
 
