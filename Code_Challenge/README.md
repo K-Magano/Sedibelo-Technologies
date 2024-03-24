@@ -1,4 +1,4 @@
-# Sedibelo Technologies Front-End Developer Test - Response
+# Sedibelo Technologies Front-End Developer Test - Keorapetse Magano
 
 This document details the code and instructions for running the web pages that fulfill the requirements of the Sedibelo Technologies Front-End Developer test.
 

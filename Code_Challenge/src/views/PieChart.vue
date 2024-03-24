@@ -1,8 +1,7 @@
 <template>
   <div class="pie-chart-container">
     <h1>Number of App Installs by Year</h1>
-    
-    <canvas id="myChart" width="400" height="350"></canvas>
+       <canvas id="myChart" width="400" height="350" class="myCanva"></canvas>
   </div>
 </template>
 
@@ -58,6 +57,7 @@ mounted() {
 
 
   <style scoped>
+
   .pie-chart-container {
     display: flex;
     flex-direction: column;
@@ -68,5 +68,17 @@ mounted() {
     margin-bottom: 1rem;
   }
 
+  @media (max-width: 320px){
+    h1{
+      font-size: 20px;
+      color: #447778;
+    
+    }
+    .pie-chart-container{
+    width: 100%;
+      
+    }
+    
+  }
 
   </style>

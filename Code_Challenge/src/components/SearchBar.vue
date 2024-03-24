@@ -36,4 +36,19 @@ const search = (e) => {
     border-radius: 5px;
    
 }
+
+@media (max-width: 320px){
+
+    .searchInput {
+      display: flex; 
+      justify-content: space-between; 
+      flex-wrap: wrap; 
+      padding: 2%;
+      margin: 1%;
+      width: 140%;
+      
+        
+    }
+  }
+
 </style>

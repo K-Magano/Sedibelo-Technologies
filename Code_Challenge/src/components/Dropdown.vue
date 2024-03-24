@@ -222,7 +222,7 @@ const filter =(e)=> {
 
     .dropdown-container {
       position: relative;
-            top: 80%; 
+      top: 80%; 
       z-index: 1; 
       background-color: #ffffff; 
       border: 1px solid #ccc; 
@@ -230,7 +230,34 @@ const filter =(e)=> {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    
+    /*MOBILE */
+    @media (max-width: 320px){
+
+      .dropdown-container {
+        position: relative;
+        top: 2%; 
+        z-index: 1; 
+        background-color: #ffffff; 
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .Documents-btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: fit-content;
+        height: 45px;
+        border: none;
+        padding: 0px 15px;
+        border-radius: 5px;
+        background-color:#e09a1f;
+        gap: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+    }
   }
 
  

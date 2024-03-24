@@ -73,11 +73,11 @@ header {
 }
 
 .logo {
-  width: 450px; /* Set the width of the logo */
+  width: 450px; 
   height: 150px; 
 }
 .logo-container {
-  text-align: center; /* Align the logo horizontally at the center */
+  text-align: center; 
 }
 
 
@@ -113,8 +113,68 @@ header {
   padding: 1rem 0;
   margin: 0.5rem;
   border-radius: 5px;
-  width: 70%;
+  width: 100%;
+ 
+}
+
+@media (max-width: 320px) {
+  .container{
+    flex-direction: columns;
+    width: 300px;
+    
+  }
+ .wrapper{
+    color: #447778;
+    font-size: 14px;
+  }
+  .myChart{
+    height:300px;
+  }
+
+  .logo {
+    width: 280px; 
+    height: 120px; 
+  }
+  .logo-container {
+    text-align: center; 
+  }
+
+  header {
+    border-radius: 10px;
+    background-color: #FEAE96;
+    background-image: url('../src/assets/asset 10.jpeg');
+    background-size: cover;   
+    width: 100%;
+    overflow: hidden;
+    height: 150px; 
+    
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    width: 100%;
+    background: #a87b37
+  }
   
+  .nav-link {
+    color: #333333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+    
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: #013237; 
+    color:#a87b37 
+  }
+
 
 }
 
@@ -132,4 +192,6 @@ header {
     font-size: 1rem; 
   }
 }
+
+
 </style>

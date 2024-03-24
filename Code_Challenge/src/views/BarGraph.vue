@@ -2,7 +2,7 @@
   <div class="bar-chart-container">
     <h1>Number of App Installs by Year</h1>
    
-    <canvas id="myChart" width="350" height="350"></canvas>
+    <canvas id="myChart" width="350" height="350" class="myCanva"></canvas>
   </div>
 </template>
 
@@ -62,6 +62,8 @@ mounted() {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: min(900px, 100% - 4rem);
+    margin-inline: auto;
   
   }
   
@@ -69,5 +71,19 @@ mounted() {
     margin-bottom: 1rem;
   }
 
+  @media (max-width: 320px) {
+    .bar-chart-container{
+      flex-direction: columns;
+      height:300px;
+      width: 100%;
+      
+    }
+    h1 {
+      color: #447778;
+      font-size: 18px;
+    }
 
+    
+  }
+  
   </style>

@@ -83,10 +83,8 @@ const handleFilter = (filter) => {
 <template>
 
   
-  <div class='wrapper'>
- 
-
-    <div class="filters-container">
+  <div class='container'>
+     <div class="filters-container">
       <SearchBar @search="handleSearch"/>
       <Dropdown :items="items" @filter="handleFilter" />
     </div>
@@ -126,10 +124,9 @@ const handleFilter = (filter) => {
 
 
 <style scoped>
-.wrapper {
+.container {
  width: min(900px, 100% - 4rem);
  margin-inline: auto;
- 
  
 }
 
@@ -178,49 +175,50 @@ tr:nth-of-type(2n){
   flex-wrap: wrap; 
   background: #013237;
   padding: 3%;
+  margin-bottom: 2%;
   
  
 }
 
-@media (max-width: 768px) {
-  .filters-container {
-    flex-direction: row;
-    background: #447778;
+/*Mobile View*/
+
+@media (max-width: 320px) {
+  .pagination-controls {
+    margin: 5%;
+    width: 85%;
     
   }
-}
-
-@media (max-width: 425px) {
-  .filters-container {
-    background: pink;
-       
+ 
+   .pagination-controls button:hover,
+  .pagination-controls button.active {
+    background-color: #013237; 
   }
-}
 
-h1 {
-  margin-bottom: 1rem;
-}
+  .pagination-controls button{
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+    background: #e09a1f;
+    border-style: none;
+  }
+  .pagination-controls button:hover,
+  .pagination-controls button.active {
+    background-color: #013237; 
+  }
+  
+  .bSpan{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0.5rem 0.5rem
+  }
+  
+  }
 
-.pagination-controls button{
-  color: black;
-  text-decoration: none;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.2s ease-in-out;
 
-}
-.pagination-controls button:hover,
-.pagination-controls button.active {
-  background-color: #013237; 
-}
-
-.bSpan{
-  color: black;
-  text-decoration: none;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem
-}
 
 @media (max-width: 650px) {
   th{
@@ -235,20 +233,23 @@ h1 {
   }
 
  td:first-child{
-  padding-top: 2rem;
+  padding-top: 1rem;
  }
 
   td:last-child{
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
   }
 
   td::before{
-   content:attr(data-cell) ": ";
+   content:attr(data-cell) " : ";
    font-weight: 700;
    text-transform: capitalize;
   }
   
   
 }
+
+
+
 
 </style>
